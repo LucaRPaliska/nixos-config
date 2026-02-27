@@ -1,15 +1,11 @@
+{ config, pkgs, lib, inputs, ... }:
+
 {
   imports = [
-    ./config.nix
-    ./programs.nix
+    ./user
   ];
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-
-      # permittedInsecurePackages = [];
-    };
-  };
+  
+  home.username = "listport";
+  home.homeDirectory = "/home/listport";
+  home.stateVersion = "25.11";
 }
