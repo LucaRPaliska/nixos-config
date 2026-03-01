@@ -1,15 +1,26 @@
 { config, pkgs, home-manager, ... }:
 
 {
-
   home.packages = with pkgs; [
-    hello
-    waybar # eww <-- look into
-    kitty
-    tmux
-    ripgrep
-    bluez # waybar integrated bluetooth manager w rofi
-    gh # github auth
+    waybar # Top status bar # LP - eww <-- look into
+    kitty # Terminal
+    hyprlock # Lock screen
+    grim # Screenshot for lock screen
+    corrupter # Image corrupter effect for lock screen
+    # nvim
+    tmux # Terminal multiplexer
+    bluez # Bluetooth GUI
+    # mako
+
+    # Misc
+    libnotify # Notification CLI tools
+    gh # Github Auth
+    unzip
+    ripgrep # Regex pattern searcher (Nvim telescope)
+
+    # Dev Stuff
+    nodejs_24
+    python315
   ];
 
   home.sessionVariables = {
@@ -42,6 +53,18 @@
     vimdiffAlias = true;
   };
 
+  programs.hyprlock.enable = true;
+
+  # LP - look into potentially using sops to encrypt keys
+  programs.git.settings = {
+    userName = "LucaRPaliska";
+    userEmail = "lucarpaliska@gmail.com";
+    # signing = {
+    #   key = "<key>";
+    #   signByDefault = true;
+    # };
+  };
+
   programs.gh = {
     enable = true;
     gitCredentialHelper = {
@@ -51,7 +74,7 @@
 
   programs.kitty = {
     enable = true; 
-
+    # LP - move the extraConfig to dedicated file
     extraConfig = ''
       cursor_trail 1
       cursor_train_decay 0.2

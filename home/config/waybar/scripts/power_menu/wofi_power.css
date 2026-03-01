@@ -1,0 +1,34 @@
+/* LP - Potentially swap with rofi or another 
+ * GUI since wofi theming is pretty limited */
+
+* {
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    color: white;
+    background-color: black;
+}
+
+window {
+    /* border-radius: 10px; */
+    border: 2px solid white;
+}
+
+#outer-box {
+    border: 1px solid white;
+}
+
+#input {
+    border: none;
+}
+
+#inner-box {
+    background: white;
+}
+
+#entry:selected {
+    color: black;
+}
+#text:selected {
+    background: white;
+    color: black;
+}

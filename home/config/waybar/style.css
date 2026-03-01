@@ -1,0 +1,163 @@
+/* LP - probably adjust these color settings ltr */
+@define-color background #000000;
+@define-color second-background #000000;
+@define-color text #ffffff;
+@define-color borders #ffffff;
+@define-color focused #ffffff;
+@define-color focused2 #000000;
+@define-color color1 #7699A3;
+@define-color color2 #8D7AAE;
+@define-color color3 #78997A;
+@define-color urgent #B05A5A;
+
+* {
+  font-family: "Iosevka Nerd Font";
+  font-size: 13px;
+  padding: 0px 2px;
+}
+
+#custom-openbracket,
+#custom-closebracket {
+  margin: 0 0px;
+}
+
+* {
+  transition: none;
+  animation: none;
+}
+
+window#waybar {
+  background-color: transparent;
+  border-bottom: 0;
+  color: @text;
+  /*transition: background-color 0.5s;*/
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+/* Modules */
+.modules-left,
+.modules-center,
+.modules-right {
+  margin: 2px 1px 0px 2px;
+  background-color: @background;
+  border: 1px solid @focused;
+  border-radius: 4px;
+}
+
+button {
+  border: none;
+}
+
+/* Workspace */
+#workspaces button {
+  background-color: transparent;
+  color: white;
+}
+
+#workspaces button:hover {
+  background-color: @second-background;
+}
+
+#workspaces button.active {
+  color: @focused2;
+  background-color: @second-background;
+}
+
+#workspaces button.urgent {
+  background-color: @urgent;
+}
+
+#workspaces button label {
+  color: white;
+}
+
+/* Misc -- probably useful */
+.modules-left>widget:first-child>#workspaces {
+  margin-left: 0;
+}
+
+.modules-right>widget:last-child>#workspaces {
+  margin-right: 0;
+}
+
+/* Media Player */
+/* LP - potentially remove if not using mpris */
+#mpris {
+  background-color: @background;
+  color: @text;
+}
+
+#mpris.playing {
+  background-color: @color3;
+  border-radius: 2px;
+  color: @background;
+}
+
+/* I'm not sure why, but the idle icon just overlaps with the other ones. */
+#idle_inhibitor {
+  padding: 0px 10px 0px 2px;
+}
+
+#clock:hover,
+#battery:hover,
+#custom-cpu:hover,
+#custom-clipboard:hover,
+#custom-bluetooth:hover,
+#network:hover,
+#idle_inhibitor:hover,
+#custom-swaync:hover,
+#backlight:hover,
+#wireplumber:hover {
+  transition: background-color 0.3s ease;
+}
+
+#clock:hover,
+#battery:hover,
+#custom-cpu:hover,
+#custom-clipboard:hover,
+#custom-bluetooth:hover,
+#network:hover,
+#idle_inhibitor:hover,
+#custom-swaync:hover,
+#backlight:hover,
+#wireplumber:hover {
+  /* color: @color1; */
+  background-color: white;
+  border-radius: 3px;
+}
+
+#wireplumber.muted {
+  background-color: @color2;
+}
+
+/* LP - potentially remove */
+#custom-swaync {
+  font-size: 16px;
+  color: @text;
+}
+
+#battery.charging,
+#battery.plugged {
+  background-color: @background;
+  color: @text;
+}
+
+#battery.critical:not(.charging) {
+  background-color: @urgent;
+  color: @text;
+  animation: blink 0.5s steps(12) infinite alternate;
+}
+
+@keyframes blink {
+  to {
+    background-color: @second-background;
+    color: @text;
+  }
+}
