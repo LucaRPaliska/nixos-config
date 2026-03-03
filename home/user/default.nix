@@ -2,6 +2,7 @@
   imports = [
     ./config.nix
     ./programs.nix
+    ./shell.nix
   ];
 
   nixpkgs = {

@@ -13,6 +13,6 @@ in
       ".config/waybar".source = "${configDir}/waybar";
       # ".config/btop".source = "${configDir}/btop";
       # ".config/wofi".source = "${configDir}/wofi";
-      # ".config/mako".source = "${configDir}/mako";
+      ".config/mako".source = "${configDir}/mako";
   };
 }

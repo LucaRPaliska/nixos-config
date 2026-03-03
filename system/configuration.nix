@@ -7,6 +7,28 @@
       ./modules
     ];
 
+  environment.systemPackages = with pkgs; [
+    vim 
+    wget
+    gnumake
+    git
+    libnotify # Notification CLI tools
+    gh # Github Auth
+    unzip
+    ripgrep # Regex pattern searcher (Nvim telescope)
+    tree # CLI directory display
+    htop-vim
+    jq # Random data parser
+    bc # Random math engine
+    brightnessctl
+
+    zsh # new shell
+  ];
+
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [ zsh ];
+  users.defaultUserShell = pkgs.zsh;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -46,33 +68,16 @@
     isNormalUser = true;
     description = "Luca P";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    # packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
-
-  environment.systemPackages = with pkgs; [
-    vim 
-    wget
-    gnumake
-    git
-    mako # Notification daemon <-- look into for more customization
-    libnotify # mako dependancy
-    wofi # app launcher (wofi? bmenu? fuzzel? tofi?
-    rofi # another app launcher (portentially switch out either wofi or rofi)
-    networkmanagerapplet # for GUI on network manager
-    swww # wallpaper shtuff
-    brave # browser
-    discord
-    zsh # new shell
-    lua # also for nvim. might need to downgrade to 5.1 but double check 
-    psmisc # provides killall command which makes toggleable apps via keybind easy
-    luajitPackages.luarocks_bootstrap # nvim dependency <-- maybe look into moving this to home manager or moving nvim to system pkgs. Also, probably not needed in long-run if no plugins use this
-  ];
 
   system.stateVersion = "25.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   xdg.portal.enable = true; # LP - look into and compare to other nixos configs
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
   
   security.rtkit.enable = true; # <------- see what this does?
   # security.pam.services.gtklock = {}; # gtk lock config LP - see if need to move this somewhere

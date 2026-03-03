@@ -2,29 +2,64 @@
 
 {
   home.packages = with pkgs; [
-    waybar # Top status bar # LP - eww <-- look into
     kitty # Terminal
+    oh-my-zsh # Zsh shell theme and plugin manager
+    zsh-powerlevel10k # Neat theme for zsh
+    wofi # app launcher (wofi? bmenu? fuzzel? tofi?
+    rofi # another app launcher (portentially switch out either wofi or rofi)
     hyprlock # Lock screen
+    yazi # CLI with vim motions based file explorer
+    waybar # Top status bar # LP - eww <-- look into
+    eza # Modern look for ls
+    zoxide # Faster and smarter replacement for cd
     grim # Screenshot for lock screen
     corrupter # Image corrupter effect for lock screen
-    # nvim
-    tmux # Terminal multiplexer
     bluez # Bluetooth GUI
-    # mako
+    networkmanagerapplet # for GUI on network manager
+    mako # Notification daemon <-- look into for more customization
+    libnotify # mako dependancy
+    swww # wallpaper shtuff
 
-    # Misc
-    libnotify # Notification CLI tools
-    gh # Github Auth
-    unzip
-    ripgrep # Regex pattern searcher (Nvim telescope)
+    # Apps
+    neovim 
+    tmux # Terminal multiplexer
+    luajitPackages.luarocks_bootstrap # nvim dependency <-- maybe look into moving this to home manager or moving nvim to system pkgs. Also, probably not needed in long-run if no plugins use this
+    lua
+    vivaldi
+    brave
+    google-chrome
+    discord
+    slack
+    spotify
 
     # Dev Stuff
     nodejs_24
     python315
+
+    lua-language-server
+    basedpyright
+    typescript-language-server
+    vscode-css-languageserver
+    superhtml
+    rust-analyzer
+
   ];
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
+  };
+
+   # LP - see if move this
+   # Needed for discord graphics to be normal qualtiy (unsure why)
+  xdg.desktopEntries = {
+    discord = {
+      name = "Discord Custom";
+      exec = "discord --disable-gpu"; #--enable-features=WaylandWindowDecorations --ozone-platform-hint=auto"; LP
+      icon = "discord";
+      terminal = false;
+      categories = [ "Network" "InstantMessaging" ];
+      mimeType = [ "x-scheme-handler/discord" ];
+    };
   };
 
   home.pointerCursor = {
@@ -39,18 +74,6 @@
   # Allows home-manager to install and manage itself.
   programs.home-manager = {
     enable = true;
-  };
-
-  programs.bash = {
-    enable = true;
-  };
-
-  programs.neovim = {
-    enable = true;
-    
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
   };
 
   programs.hyprlock.enable = true;
