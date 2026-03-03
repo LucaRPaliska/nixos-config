@@ -1,4 +1,5 @@
 /* LP - probably adjust these color settings ltr */
+/* LP - pretty sure the define-color is depreceated... change to var in root ltr */
 @define-color background #000000;
 @define-color second-background #000000;
 @define-color text #ffffff;
@@ -14,16 +15,15 @@
   font-family: "Iosevka Nerd Font";
   font-size: 13px;
   padding: 0px 2px;
+  transition: none;
+  animation: none;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 
+             0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 #custom-openbracket,
 #custom-closebracket {
   margin: 0 0px;
-}
-
-* {
-  transition: none;
-  animation: none;
 }
 
 window#waybar {
@@ -56,29 +56,39 @@ button {
 }
 
 /* Workspace */
-#workspaces button {
-  background-color: transparent;
-  color: white;
-}
 
-#workspaces button:hover {
-  background-color: @second-background;
+#workspaces button {
+    color: #ffffff;
+    background: transparent;
+    border-radius: 8px;
+    padding: 0 5px;
+    transition: all 0.3s ease;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
 }
 
 #workspaces button.active {
-  color: @focused2;
-  background-color: @second-background;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 
+               0 0 10px rgba(255, 255, 255, 0.4);
+
+    border-right: none;
+    border-left: none;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+#workspaces button:hover {
+    color: #bbbbbb;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 #workspaces button.urgent {
-  background-color: @urgent;
+    color: #eb4d4b;
+    text-shadow: 0 0 5px #eb4d4b;
 }
 
-#workspaces button label {
-  color: white;
-}
-
-/* Misc -- probably useful */
 .modules-left>widget:first-child>#workspaces {
   margin-left: 0;
 }
@@ -130,11 +140,6 @@ button {
 #wireplumber:hover {
   /* color: @color1; */
   background-color: white;
-  border-radius: 3px;
-}
-
-#wireplumber.muted {
-  background-color: @color2;
 }
 
 /* LP - potentially remove */
