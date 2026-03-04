@@ -15,6 +15,7 @@
     grim # Screenshot for lock screen
     corrupter # Image corrupter effect for lock screen
     bluez # Bluetooth GUI
+    bzmenu
     networkmanagerapplet # for GUI on network manager
     mako # Notification daemon <-- look into for more customization
     libnotify # mako dependancy
@@ -31,10 +32,14 @@
     discord
     slack
     spotify
+    flameshot # screenshot utility
 
     # Dev Stuff
     nodejs_24
-    python315
+    (python3.withPackages (ps: with ps; [
+      pip
+    ]))
+    jq
 
     lua-language-server
     basedpyright
