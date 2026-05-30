@@ -40,6 +40,7 @@
     wineWowPackages.stable
     winetricks
     audacity
+    imagemagick # image editing terminal util
 
     # Dev Stuff
     nodejs_24

@@ -7,8 +7,6 @@ in
       # ".config/kitty".source = "${configDir}/kitty";
       # ".config/neofetch".source = "${configDir}/neofetch";
       ".config/hypr".source = "${configDir}/hypr";
-      # ".config/BraveSoftware".source = "${configDir}/brave";
-      # ".config/BraveSoftware/Brave-Browser/Default".source = "${configDir}/brave";
       # ".config/swayidle".source = "${configDir}/swayidle";
       # ".config/swaylock".source = "${configDir}/swaylock";
       # ".config/wlogout".source = "${configDir}/wlogout";

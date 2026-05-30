@@ -98,6 +98,8 @@
     shell = pkgs.zsh;
   };
 
+  systemSettings.brave.enable = true;
+
   system.stateVersion = "25.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
