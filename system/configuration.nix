@@ -15,14 +15,13 @@
     libnotify # Notification CLI tools
     gh # Github Auth
     unzip
+    zip
     ripgrep # Regex pattern searcher (Nvim telescope)
     tree # CLI directory display
     htop-vim
-    jq # Random data parser
-    bc # Random math engine
+    # bc # Random math engine LP - see if needed at all / look into
     brightnessctl
-
-    zsh # new shell
+    zsh # New shell
   ];
 
   programs.zsh.enable = true;
@@ -38,6 +37,17 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # LP - look into
   networking.networkmanager.enable = true;
+
+  programs.ssh.extraConfig = ''
+    Host listport-hetzner
+      HostName 5.78.197.197
+      User root
+      IdentityFile /home/listport/.ssh/id_ed25519
+    Host nanoclaw-hetzner
+      HostName 5.78.197.197
+      User nanoclaw
+      IdentityFile /home/listport/.ssh/id_ed25519
+  '';
 
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -58,9 +68,25 @@
     variant = "";
   };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.iosevka
-  ];
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      nerd-fonts.iosevka
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-color-emoji
+      wqy_zenhei
+    ];
+
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "Noto Serif" "Noto Serif CJK SC" ];
+        sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];
+        monospace = [ "Noto Sans Mono" "Noto Sans Mono CJK SC" ];
+      };
+    };
+  };
 
   fonts.fontconfig.enable = true;
 

@@ -5,26 +5,28 @@
     kitty # Terminal
     oh-my-zsh # Zsh shell theme and plugin manager
     zsh-powerlevel10k # Neat theme for zsh
-    wofi # app launcher (wofi? bmenu? fuzzel? tofi?
+    # wofi # app launcher (wofi? bmenu? fuzzel? tofi?
     rofi # another app launcher (portentially switch out either wofi or rofi)
     hyprlock # Lock screen
-    yazi # CLI with vim motions based file explorer
-    waybar # Top status bar # LP - eww <-- look into
-    eza # Modern look for ls
-    zoxide # Faster and smarter replacement for cd
-    grim # Screenshot for lock screen
+    grim # Utility that takes a screenshot for lock screen
     corrupter # Image corrupter effect for lock screen
-    bluez # Bluetooth GUI
-    bzmenu
+    yazi # CLI with vim motions based file explorer
+    nemo # GUI file explorer with ssh capabilities by Cinnamon
+    # LP - add nemo to SUPER + E and also change theme to match compooper
+    waybar # Top status bar # LP - eww <-- look into
+    eza # Modern look for ls (replaced with alias)
+    zoxide # Faster and smarter replacement for cd
+    bzmenu # Bluetooth GUI
+    bluez # Bluetooth protocol stack for bzmenu
     networkmanagerapplet # for GUI on network manager
     mako # Notification daemon <-- look into for more customization
     libnotify # mako dependancy
     swww # wallpaper shtuff
 
     # Apps
-    neovim 
-    tmux # Terminal multiplexer
+    neovim
     luajitPackages.luarocks_bootstrap # nvim dependency <-- maybe look into moving this to home manager or moving nvim to system pkgs. Also, probably not needed in long-run if no plugins use this
+    tmux
     lua
     vivaldi
     brave
@@ -32,30 +34,41 @@
     discord
     slack
     spotify
+    obsidian
+    zotero
     flameshot # screenshot utility
+    wineWowPackages.stable
+    winetricks
+    audacity
 
     # Dev Stuff
     nodejs_24
+    conda # Manages Python as a shell. Python and NixOS don't mix well.
     (python3.withPackages (ps: with ps; [
       pip
     ]))
-    jq
+    jq # Json CLI parser
+    claude-code # gibidy
+    claude-monitor # gibidy baby monitor
+    code-cursor # gibidy 2
+    texliveFull # LaTeX compiler tool
+    gcc
 
+    # LSP Servers
     lua-language-server
     basedpyright
     typescript-language-server
     vscode-css-languageserver
     superhtml
     rust-analyzer
-
   ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
   };
 
-   # LP - see if move this
-   # Needed for discord graphics to be normal qualtiy (unsure why)
+  # LP - see if move this
+  # Needed for discord graphics to be normal qualtiy (unsure why)
   xdg.desktopEntries = {
     discord = {
       name = "Discord Custom";
@@ -112,5 +125,18 @@
 
   programs.waybar = {
     enable = true;
+  };
+
+  services.flameshot = {
+    enable = true;
+    settings = {
+      General = {
+        useGrimAdapter = true;
+        disabledTrayIcon = true;
+        copyPathAfterSave = true;
+        startupLaunch = true;
+        showDesktopNotification = false;
+      };
+    };
   };
 }

@@ -57,6 +57,7 @@
     "custom/bluetooth": {
     	"format": "",
 	"tooltip": false,
+	"on-click": "bzmenu -l rofi",
     },
 
     "group/network":{
@@ -232,7 +233,7 @@
         ]
     },
     "clock": {
-	"format": "{:%I:%M %d}",
+	"format": "{:%I:%M %m.%d}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "on-click" : "kalender"
     },
