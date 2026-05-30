@@ -115,31 +115,34 @@ button {
   padding: 0px 10px 0px 2px;
 }
 
-#clock:hover,
-#battery:hover,
-#custom-cpu:hover,
-#custom-clipboard:hover,
-#custom-bluetooth:hover,
-#network:hover,
-#idle_inhibitor:hover,
-#custom-swaync:hover,
-#backlight:hover,
-#wireplumber:hover {
-  transition: background-color 0.3s ease;
+/* Hover applied at the group box level to prevent double-application.
+   #clock and #network exist as both group IDs and inner module IDs —
+   using 'box#name' restricts the match to the GtkBox container only. */
+box#utilities:hover,
+box#windows:hover,
+box#network:hover,
+box#cpuram:hover,
+box#clock:hover,
+box#system:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
+/* Inner module widgets: transparent so they don't stack on top of the group hover */
 #clock:hover,
 #battery:hover,
-#custom-cpu:hover,
-#custom-clipboard:hover,
-#custom-bluetooth:hover,
 #network:hover,
 #idle_inhibitor:hover,
-#custom-swaync:hover,
 #backlight:hover,
-#wireplumber:hover {
-  /* color: @color1; */
-  background-color: white;
+#wireplumber:hover,
+#custom-bluetooth:hover,
+#custom-power:hover,
+#cpu:hover,
+#memory:hover,
+#custom-clipboard:hover,
+#custom-swaync:hover {
+  background-color: transparent;
 }
 
 /* LP - potentially remove */
