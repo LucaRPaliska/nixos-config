@@ -9,3 +9,5 @@ nm-applet --indicator &
 waybar &
 
 mako &
+
+hypridle &
