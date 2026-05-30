@@ -1,22 +1,13 @@
 #!/usr/bin/env bash
 
-choice=$(echo -e "shutdown\nreboot\nsuspend\nlogout" | \
-    wofi --dmenu \
-    --style ~/.config/waybar/scripts/power_menu/wofi_power.css \
-    --width 100 \
-    --height 100 \
-    --x 8 \
-    --y -1 \
-
-    --halign center \
-    --content_halign center \
-
-    --prompt ... \
-    --hide_scroll true | tr -d '\n')
+choice=$(printf "Shutdown\0icon\x1fsystem-shutdown\nReboot\0icon\x1fsystem-reboot\nSuspend\0icon\x1fsystem-suspend\nLogout\0icon\x1fsystem-log-out\n" | \
+    rofi -dmenu \
+    -p "" \
+    -theme-str 'window {width: 20%;} listview {lines: 4;} element-icon {size: 26px; margin: 0 8 0 16;}' | tr -d '\n')
 
 case "$choice" in
-    shutdown) systemctl poweroff ;;
-    reboot) systemctl reboot ;;
-    suspend) systemctl suspend ;;
-    logout) hyprctl dispatch exit ;;
+    Shutdown|shutdown) systemctl poweroff ;;
+    Reboot|reboot)     systemctl reboot ;;
+    Suspend|suspend)   systemctl suspend ;;
+    Logout|logout)     hyprctl dispatch exit ;;
 esac

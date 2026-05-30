@@ -7,6 +7,7 @@
     zsh-powerlevel10k # Neat theme for zsh
     # wofi # app launcher (wofi? bmenu? fuzzel? tofi?
     rofi # another app launcher (portentially switch out either wofi or rofi)
+    papirus-icon-theme # Icon theme for rofi
     hyprlock # Lock screen
     hypridle # Idle daemon (required for idle_inhibitor in waybar to work)
     grim # Utility that takes a screenshot for lock screen
