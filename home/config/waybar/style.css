@@ -80,8 +80,8 @@ button {
 }
 
 #workspaces button:hover {
-    color: #bbbbbb;
-    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 #workspaces button.urgent {
@@ -117,7 +117,18 @@ button {
 
 /* Hover applied at the group box level to prevent double-application.
    #clock and #network exist as both group IDs and inner module IDs —
-   using 'box#name' restricts the match to the GtkBox container only. */
+   using 'box#name' restricts the match to the GtkBox container only.
+   Transparent border in default state reserves the 1px so hover border never shifts layout. */
+box#utilities,
+box#windows,
+box#network,
+box#cpuram,
+box#clock,
+box#system {
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
 box#utilities:hover,
 box#windows:hover,
 box#network:hover,
@@ -125,7 +136,6 @@ box#cpuram:hover,
 box#clock:hover,
 box#system:hover {
   background-color: rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
