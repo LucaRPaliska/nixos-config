@@ -47,6 +47,7 @@ in
     winetricks
     audacity
     imagemagick # image editing terminal util
+    playerctl # media player controller (media keys)
 
     # Dev Stuff
     nodejs_24
@@ -105,9 +106,12 @@ in
   programs.hyprlock.enable = true;
 
   # LP - look into potentially using sops to encrypt keys
-  programs.git.settings = {
-    userName = "LucaRPaliska";
-    userEmail = "lucarpaliska@gmail.com";
+  programs.git = {
+    enable = true;
+    settings = {
+      userName = "LucaRPaliska";
+      userEmail = "lucarpaliska@gmail.com";
+    };
     # signing = {
     #   key = "<key>";
     #   signByDefault = true;

@@ -103,10 +103,7 @@
   system.stateVersion = "25.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  xdg.portal.enable = true; # LP - look into and compare to other nixos configs
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  
   security.rtkit.enable = true; # <------- see what this does?
   # security.pam.services.gtklock = {}; # gtk lock config LP - see if need to move this somewhere
   security.pam.services.hyprlock = {}; # gtk lock config LP - see if need to move this somewhere
