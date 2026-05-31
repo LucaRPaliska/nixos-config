@@ -2,7 +2,7 @@ let configDir = ../config;
 in
 {
   home.file = {
-      # ".config/nvim".source = "${configDir}/nvim";
+      ".config/nvim".source = "${configDir}/nvim";
       ".config/wallpapers".source = "${configDir}/wallpapers";
       # ".config/kitty".source = "${configDir}/kitty";
       # ".config/neofetch".source = "${configDir}/neofetch";
@@ -14,5 +14,7 @@ in
       # ".config/btop".source = "${configDir}/btop";
       # ".config/wofi".source = "${configDir}/wofi";
       ".config/mako".source = "${configDir}/mako";
+      ".config/rofi".source = "${configDir}/rofi";
+      ".config/fastfetch".source = "${configDir}/fastfetch";
   };
 }

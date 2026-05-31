@@ -1,0 +1,103 @@
+@theme "/dev/null"
+
+* {
+	bg: black;
+	background-color: @bg;
+	// margin: 10;
+	// spacing: 50px;
+}
+
+
+configuration {
+	show-icons: true;
+		icon-theme: "Papirus";
+	location: 0;
+	font: "JetBrainsMono Nerd Font 12";
+	display-drun: "";
+	display-dmenu: "";
+}
+
+window {
+	width: 30%;
+	height: 40%;
+	// border: 2px;
+	// border-color: white;
+	transparency: "real";
+	orientation: vertical;
+}
+
+mainbox {
+	children: [inputbar, listview];
+}
+
+
+// ELEMENT
+
+element {
+	padding: 6 6;
+	text-color: white;
+	border-radius: 5px;
+	spacing: 12px;
+}
+
+element selected {
+	text-color: black;
+	background-color: white;
+}
+
+element-text {
+	background-color: inherit;
+	text-color: inherit;
+	vertical-align: 0.5;
+}
+
+element-icon {
+	size: 20px;
+	// padding: 0 8;
+	margin: 0 8;
+	background-color: inherit;
+	alignment: vertical;
+}
+
+listview {
+	columns: 1;
+	lines: 9;
+	fixed-height: true;
+	fixed-columns: true;
+	fixed-lines: true;
+	// border: 0 10 6 10;
+	border: 1px;
+	border-color: white;
+	border-radius: 5px;
+}
+
+// INPUT BAR
+//------------------------------------------------
+
+entry {
+	text-color: white;
+	padding: 5 0 2 0;
+	// margin: 0 -2 0 0;
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+}
+
+inputbar {
+	// background-image: url("~/.config/rofi/rofi.png", width);
+	// padding: 180 0 0;
+	// margin: 0 0 0 0;
+	border: 1px;
+	border-color: white;
+	border-radius: 5px;
+}
+
+prompt {
+	text-color: white;
+	enable: false;
+	// padding: 10 6 0 10;
+	// margin: 0 -2 0 0;
+}
+
+#textbox-prompt-colon {
+	content: "";
+}

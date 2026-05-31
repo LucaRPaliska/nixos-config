@@ -25,6 +25,7 @@
     swww # wallpaper shtuff
     btop # Resource monitor
     fastfetch # System information tool
+    ncdu # Disk usage analyzer
 
     # Apps
     neovim
