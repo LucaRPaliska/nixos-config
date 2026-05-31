@@ -139,6 +139,7 @@
 		"class<microsoft-edge>": " ",
 		"class<Chromium|Thorium|[Cc]hrome>": " ",
 		"class<tor browser>": " ",
+		"class<brave-browser>": "󰒃 ",
 		"class<kitty|konsole>": " ",
 		"class<kitty-dropterm>": " ",
 		"class<com.mitchellh.ghostty>": " ",

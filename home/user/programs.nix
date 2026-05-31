@@ -24,6 +24,7 @@
     libnotify # mako dependancy
     swww # wallpaper shtuff
     btop # Resource monitor
+    fastfetch # System information tool
 
     # Apps
     neovim
@@ -33,7 +34,7 @@
     vivaldi
     brave
     google-chrome
-    discord
+    vesktop # Discord client with Vencord built in
     slack
     spotify
     obsidian
@@ -70,25 +71,14 @@
     EDITOR = "nvim";
   };
 
-  # LP - see if move this
-  # Needed for discord graphics to be normal qualtiy (unsure why)
-  xdg.desktopEntries = {
-    discord = {
-      name = "Discord Custom";
-      exec = "discord --disable-gpu"; #--enable-features=WaylandWindowDecorations --ozone-platform-hint=auto"; LP
-      icon = "discord";
-      terminal = false;
-      categories = [ "Network" "InstantMessaging" ];
-      mimeType = [ "x-scheme-handler/discord" ];
-    };
-  };
-
   gtk = {
     enable = true;
     iconTheme = {
       name = "Papirus";
       package = pkgs.papirus-icon-theme;
     };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
   };
 
   home.pointerCursor = {

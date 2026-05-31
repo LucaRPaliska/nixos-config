@@ -168,14 +168,15 @@ box#system:hover {
 }
 
 #battery.critical:not(.charging) {
-  background-color: @urgent;
-  color: @text;
-  animation: blink 0.5s steps(12) infinite alternate;
+  background-color: #ff0000;
+  color: #ffffff;
+  font-weight: bold;
+  animation: blink 0.4s linear infinite alternate;
 }
 
 @keyframes blink {
   to {
     background-color: @second-background;
-    color: @text;
+    color: #ff0000;
   }
 }

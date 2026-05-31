@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-swww init &
-
-# swww img --.png & <-- get wallpaper image
+swww-daemon &
+while ! swww query &>/dev/null; do sleep 0.1; done
+swww img ~/.config/wallpapers/adam_final.png
 
 nm-applet --indicator &
-
-waybar &
 
 mako &
 
 hypridle &
+~/.config/hypr/scripts/battery_monitor.sh &
