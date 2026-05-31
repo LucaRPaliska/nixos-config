@@ -7,7 +7,6 @@
     zsh-powerlevel10k # Neat theme for zsh
     # wofi # app launcher (wofi? bmenu? fuzzel? tofi?
     rofi # another app launcher (portentially switch out either wofi or rofi)
-    papirus-icon-theme # Icon theme for rofi
     hyprlock # Lock screen
     hypridle # Idle daemon (required for idle_inhibitor in waybar to work)
     grim # Utility that takes a screenshot for lock screen
@@ -24,6 +23,7 @@
     mako # Notification daemon <-- look into for more customization
     libnotify # mako dependancy
     swww # wallpaper shtuff
+    btop # Resource monitor
 
     # Apps
     neovim
@@ -80,6 +80,14 @@
       terminal = false;
       categories = [ "Network" "InstantMessaging" ];
       mimeType = [ "x-scheme-handler/discord" ];
+    };
+  };
+
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus";
+      package = pkgs.papirus-icon-theme;
     };
   };
 

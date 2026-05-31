@@ -57,7 +57,7 @@
     "custom/bluetooth": {
     	"format": "",
 	"tooltip": false,
-	"on-click": "bzmenu -l rofi",
+	"on-click": "bzmenu --launcher custom --spaces 5 --launcher-command \"rofi -dmenu -i -p '' -theme-str 'window {width: 20%;} element-icon {size: 26px; margin: 0 8 0 16;}'\"",
     },
 
     "group/network":{
