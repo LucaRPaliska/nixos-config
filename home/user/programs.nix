@@ -122,12 +122,15 @@ in
   };
 
   programs.kitty = {
-    enable = true; 
+    enable = true;
     # LP - move the extraConfig to dedicated file
     extraConfig = ''
       cursor_trail 1
       cursor_train_decay 0.2
       cursor_trail_start_threshold 3
+      background_opacity 0.5
+      background_blur 1
+      dynamic_background_opacity yes
     '';
   };
 
