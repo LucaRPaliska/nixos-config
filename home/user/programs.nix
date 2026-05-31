@@ -1,19 +1,21 @@
 { config, pkgs, home-manager, ... }:
 
+let
+  pureblack-gtk-theme = import ../pkgs/pureblack-gtk-theme.nix { inherit pkgs; };
+in
+
 {
   home.packages = with pkgs; [
     kitty # Terminal
     oh-my-zsh # Zsh shell theme and plugin manager
     zsh-powerlevel10k # Neat theme for zsh
-    # wofi # app launcher (wofi? bmenu? fuzzel? tofi?
-    rofi # another app launcher (portentially switch out either wofi or rofi)
+    rofi # another app launcher 
     hyprlock # Lock screen
     hypridle # Idle daemon (required for idle_inhibitor in waybar to work)
     grim # Utility that takes a screenshot for lock screen
     corrupter # Image corrupter effect for lock screen
     yazi # CLI with vim motions based file explorer
-    nemo # GUI file explorer with ssh capabilities by Cinnamon
-    # LP - add nemo to SUPER + E and also change theme to match compooper
+    xfce.thunar # GUI file explorer
     waybar # Top status bar # LP - eww <-- look into
     eza # Modern look for ls (replaced with alias)
     zoxide # Faster and smarter replacement for cd
@@ -74,8 +76,12 @@
 
   gtk = {
     enable = true;
+    theme = {
+      name = "PureBlack";
+      package = pureblack-gtk-theme;
+    };
     iconTheme = {
-      name = "Papirus";
+      name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
