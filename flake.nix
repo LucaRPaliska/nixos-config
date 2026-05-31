@@ -6,9 +6,10 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11"; # explicitly writing 25.11????? change ltr
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, hyprland, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, hyprland, nixos-hardware, ... }:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -26,7 +27,13 @@
     in {
     nixosConfigurations.nixos = lib.nixosSystem {
       inherit system;
-      modules = [ ./system/configuration.nix ];
+      modules = [
+        ./system/configuration.nix
+        nixos-hardware.nixosModules.common-cpu-amd
+        nixos-hardware.nixosModules.common-cpu-amd-pstate
+        nixos-hardware.nixosModules.common-pc-laptop
+        nixos-hardware.nixosModules.common-pc-laptop-ssd
+      ];
     };
 
     homeConfigurations = {

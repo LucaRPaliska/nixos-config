@@ -109,13 +109,13 @@ in
   programs.git = {
     enable = true;
     settings = {
-      userName = "LucaRPaliska";
-      userEmail = "lucarpaliska@gmail.com";
+      user = {
+        name = "LucaRPaliska";
+        email = "lucarpaliska@gmail.com";
+      };
+      # commit.gpgsign = true;
+      # user.signingkey = "<key>";
     };
-    # signing = {
-    #   key = "<key>";
-    #   signByDefault = true;
-    # };
   };
 
   programs.gh = {

@@ -16,14 +16,19 @@ let
 };
 in
 {
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [ "--cmd cd" ];
+  };
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    initContent = '' 
-          source ~/.p10k.zsh && 
-          eval "$(zoxide init --cmd cd zsh)"
-      ''; 
+    initContent = ''
+          source ~/.p10k.zsh
+      '';
     plugins = [
       {
         name = "powerlevel10k";

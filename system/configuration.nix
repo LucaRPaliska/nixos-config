@@ -8,8 +8,9 @@
     ];
 
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
     wget
+    polkit_gnome
     gnumake
     git
     libnotify # Notification CLI tools
@@ -104,7 +105,10 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 
-  security.rtkit.enable = true; # <------- see what this does?
+  powerManagement.cpuFreqGovernor = "schedutil";
+
+  security.rtkit.enable = true;
+  security.polkit.enable = true; # <------- see what this does?
   # security.pam.services.gtklock = {}; # gtk lock config LP - see if need to move this somewhere
   security.pam.services.hyprlock = {}; # gtk lock config LP - see if need to move this somewhere
 
