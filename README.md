@@ -1,6 +1,8 @@
-# listport's NixOS Dotfiles
+# My NixOS+Hyprland Dotfiles
 
-My personal NixOS configuration running Hyprland on a HP ENVY x360 2-in-1 (AMD).
+![Hyprland screenshot](./images/desktop.png)
+
+My personal NixOS-flake configuration running Hyprland. Configs are managed by home-manager.
 
 ---
 
@@ -113,8 +115,6 @@ Configuration is split into two layers that are rebuilt independently:
 ---
 
 ## Hardware Notes
-
-**Machine:** HP ENVY x360 2-in-1 15-ey0xxx — AMD CPU, NVMe SSD
 
 nixos-hardware modules in use (no model-specific module exists for this laptop):
 
