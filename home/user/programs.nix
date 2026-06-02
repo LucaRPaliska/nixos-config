@@ -25,6 +25,7 @@ in
     mako # Notification daemon <-- look into for more customization
     libnotify # mako dependancy
     swww # wallpaper shtuff
+    socat # IPC socket listener (wallpaper_manager.sh)
     btop # Resource monitor
     fastfetch # System information tool
     ncdu # Disk usage analyzer
