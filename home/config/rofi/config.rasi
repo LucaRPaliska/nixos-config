@@ -24,6 +24,7 @@ window {
 	// border-color: white;
 	transparency: "real";
 	orientation: vertical;
+	opacity: 100;
 }
 
 mainbox {
