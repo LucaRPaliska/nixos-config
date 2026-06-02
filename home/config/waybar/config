@@ -236,7 +236,7 @@
     "clock": {
 	"format": "{:%I:%M %m.%d}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "on-click" : "kalender"
+        "on-click" : ""
     },
 
     "group/system": {
@@ -317,20 +317,5 @@
 	"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
 	"tooltip-format": "{icon} {desc} | {volume}%",
 	"smooth-scrolling-threshold": 1,
-    },
-
-    "custom/clipboard": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "~/.config/waybar/scripts/clipboard_menu.sh"
-    },
-    "tray": {
-        "icon-size": 14,
-        "spacing": 10
-    },
-    "custom/notifications": {
-    "format": "",
-    "tooltip": false,
-    "on-click": "~/.config/waybar/scripts/notification_center.sh"
     }
 }]

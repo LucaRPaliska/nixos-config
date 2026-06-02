@@ -15,7 +15,7 @@ in
     grim # Utility that takes a screenshot for lock screen
     corrupter # Image corrupter effect for lock screen
     yazi # CLI with vim motions based file explorer
-    xfce.thunar # GUI file explorer
+    # thunar managed via programs.thunar in system/configuration.nix
     waybar # Top status bar # LP - eww <-- look into
     eza # Modern look for ls (replaced with alias)
     zoxide # Faster and smarter replacement for cd
@@ -28,6 +28,14 @@ in
     btop # Resource monitor
     fastfetch # System information tool
     ncdu # Disk usage analyzer
+    pavucontrol # Audio control GUI
+    xdg-utils # xdg-open and friends
+    wl-clipboard # Wayland clipboard (keeps contents alive after app closes)
+    cliphist # Clipboard history manager
+    mpv # Video player
+    zathura # PDF viewer
+    hyprsunset # Blue light filter
+    file-roller # Archive GUI (pairs with thunar-archive-plugin)
 
     # Apps
     neovim
@@ -61,6 +69,7 @@ in
     code-cursor # gibidy 2
     texliveFull # LaTeX compiler tool
     gcc
+    cargo # Rust package manager + compiler
 
     # LSP Servers
     lua-language-server

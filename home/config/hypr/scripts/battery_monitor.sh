@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Sends increasingly urgent notifications as battery drains.
-# Runs in the background from start.sh.
+# Runs in the background via exec-once in hyprland.conf.
 
 NOTIFIED_CRITICAL=false
 NOTIFIED_WARNING=false

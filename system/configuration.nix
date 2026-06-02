@@ -99,6 +99,16 @@
     shell = pkgs.zsh;
   };
 
+  services.gvfs.enable = true; # Virtual filesystem for Thunar (trash, USB mounting, MTP)
+
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-volman          # Auto-mount removable drives
+      thunar-archive-plugin  # Right-click archive extraction
+    ];
+  };
+
   systemSettings.brave.enable = true;
 
   system.stateVersion = "25.11";
