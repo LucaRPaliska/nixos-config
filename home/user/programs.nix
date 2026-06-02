@@ -2,7 +2,6 @@
 
 let
   pureblack-gtk-theme = import ../pkgs/pureblack-gtk-theme.nix { inherit pkgs; };
-  blackbird-gtk-theme = import ../pkgs/blackbird-gtk-theme.nix { inherit pkgs; };
 in
 
 {
@@ -89,8 +88,8 @@ in
   gtk = {
     enable = true;
     theme = {
-      name = "Blackbird";
-      package = blackbird-gtk-theme;
+      name = "Graphite-Dark";
+      package = pkgs.graphite-gtk-theme;
     };
     iconTheme = {
       name = "Papirus-Dark";
