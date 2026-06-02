@@ -8,7 +8,7 @@ in
       # ".config/neofetch".source = "${configDir}/neofetch";
       ".config/hypr".source = "${configDir}/hypr";
       ".config/waybar".source = "${configDir}/waybar";
-      # ".config/btop".source = "${configDir}/btop";
+      ".config/btop".source = "${configDir}/btop";
       ".config/mako".source = "${configDir}/mako";
       ".config/rofi".source = "${configDir}/rofi";
       ".config/fastfetch".source = "${configDir}/fastfetch";
