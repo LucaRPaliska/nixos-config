@@ -6,6 +6,19 @@ My personal NixOS-flake configuration running Hyprland. Configs are managed by h
 
 ---
 
+<table>
+<tr>
+<td align="center"><img src="./images/main_screen.png" width="380"/><br><b>Main Desktop</b></td>
+<td align="center"><img src="./images/programs.png" width="380"/><br><b>Neovim, Yazi, Thunar, and Rofi</b></td>
+</tr>
+<tr>
+<td align="center"><img src="./images/lock_screen.jpg" width="380"/><br><b>Lock Screen (screenshots whatever is on screen)</b></td>
+<td align="center"><img src="./images/greeter_sc.png" width="380"/><br><b>TUI Greeter</b></td>
+</tr>
+</table>
+
+---
+
 ## Components
 
 | Component        | Name                        |

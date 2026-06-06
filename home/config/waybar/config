@@ -36,7 +36,7 @@
             "custom/openbracket",
             "custom/power",
             "custom/split",
-            "idle_inhibitor",
+            "custom/idle_inhibitor",
             "custom/bluetooth",
             "custom/closebracket"
         ]
@@ -47,12 +47,13 @@
 	"on-click": "~/.config/waybar/scripts/power_menu/power_menu.sh",
 	"tooltip": "Power Menu"
     },   
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+    "custom/idle_inhibitor": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "if [ -f /tmp/hypridle.lock ]; then echo '{\"text\": \"\", \"tooltip\": \"Idle inhibitor activated\"}'; else echo '{\"text\": \"\", \"tooltip\": \"Idle inhibitor deactivated\"}'; fi",
+        "exec-if": "pgrep hypridle",
+        "on-click": "~/.config/hypr/scripts/toggle_inhibitor.sh",
+        "return-type": "json"
     },
     "custom/bluetooth": {
     	"format": "",

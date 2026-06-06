@@ -59,6 +59,8 @@ in
     playerctl # media player controller (media keys)
 
     # Dev Stuff
+    fbcat # Remove ltr
+    mkcert # EZ locally trusted development certs
     nodejs_24
     conda # Manages Python as a shell. Python and NixOS don't mix well.
     (python3.withPackages (ps: with ps; [
@@ -67,7 +69,8 @@ in
     jq # Json CLI parser
     claude-code # gibidy
     claude-monitor # gibidy baby monitor
-    code-cursor # gibidy 2
+    opencode # gibidy 2
+    code-cursor # gibidy 3
     texliveFull # LaTeX compiler tool
     gcc
     cargo # Rust package manager + compiler

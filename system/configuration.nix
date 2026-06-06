@@ -8,6 +8,7 @@
     ];
 
   environment.systemPackages = with pkgs; [
+    docker
     vim
     wget
     polkit_gnome
@@ -24,6 +25,8 @@
     brightnessctl
     zsh # New shell
   ];
+
+  virtualisation.docker.enable = true;
 
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
@@ -63,6 +66,8 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+
+  services.tailscale.enable = true;
 
   services.xserver.xkb = {
     layout = "us";
