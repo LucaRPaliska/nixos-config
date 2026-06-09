@@ -70,10 +70,8 @@
         "format": "{}",
         "interval": 2,
         "exec": "~/.config/waybar/scripts/nightmode.sh status",
-        "return-type": "json",
-        "on-click": "~/.config/waybar/scripts/nightmode.sh toggle",
-        "on-click-right": "~/.config/waybar/scripts/nightmode.sh menu",
-        "tooltip": true
+        "on-click": "~/.config/waybar/scripts/nightmode.sh cycle",
+        "on-click-right": "~/.config/waybar/scripts/nightmode.sh menu"
     },
 
     "custom/bluetooth": {

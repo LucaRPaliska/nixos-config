@@ -1,41 +1,54 @@
 #!/usr/bin/env bash
 
-# Hyprsunset toggle + temperature control for waybar.
-# Left click:  toggle night mode on/off
-# Right click: rofi menu to pick temperature preset
+# Hyprsunset dial for waybar.
+# Left click:  cycle through presets (off → 5000K → 4500K → 4000K → 3500K → 3000K → off)
+# Right click: rofi menu to jump to any preset
 
-TEMP_FILE="/tmp/hyprsunset_temp"
-DEFAULT_TEMP=4500
+STATE_FILE="/tmp/hyprsunset_state"
+STATES=("off" "5000" "4500" "4000" "3500" "3000")
+
+current_state() {
+    cat "$STATE_FILE" 2>/dev/null || echo "off"
+}
+
+apply_state() {
+    local state="$1"
+    echo "$state" > "$STATE_FILE"
+    pkill hyprsunset 2>/dev/null
+    [[ "$state" != "off" ]] && hyprsunset -t "$state" &
+}
 
 case "$1" in
-    toggle)
-        if pgrep -x hyprsunset > /dev/null; then
-            pkill hyprsunset
-        else
-            temp=$(cat "$TEMP_FILE" 2>/dev/null || echo "$DEFAULT_TEMP")
-            hyprsunset -t "$temp" &
-        fi
+    cycle)
+        cur=$(current_state)
+        # Find index of current state, advance to next
+        next="off"
+        for i in "${!STATES[@]}"; do
+            if [[ "${STATES[$i]}" == "$cur" ]]; then
+                next="${STATES[$(( (i + 1) % ${#STATES[@]} ))]}"
+                break
+            fi
+        done
+        apply_state "$next"
         ;;
 
     menu)
-        choice=$(printf "3000K  Very warm\n3500K  Warm\n4000K  Moderate\n4500K  Default\n5000K  Slightly warm\nOff" \
+        choice=$(printf "Off\n5000K  Slightly warm\n4500K  Default\n4000K  Moderate\n3500K  Warm\n3000K  Very warm" \
             | rofi -dmenu -p "Night Mode" -i)
         temp=$(echo "$choice" | grep -oP '^\d+')
         if [[ "$choice" == "Off" ]]; then
-            pkill hyprsunset
+            apply_state "off"
         elif [[ -n "$temp" ]]; then
-            echo "$temp" > "$TEMP_FILE"
-            pkill hyprsunset 2>/dev/null
-            hyprsunset -t "$temp" &
+            apply_state "$temp"
         fi
         ;;
 
     status)
-        if pgrep -x hyprsunset > /dev/null; then
-            temp=$(cat "$TEMP_FILE" 2>/dev/null || echo "$DEFAULT_TEMP")
-            echo "{\"text\": \" ${temp}K\", \"tooltip\": \"Night mode on (${temp}K)\", \"class\": \"active\"}"
+        cur=$(current_state)
+        if [[ "$cur" == "off" ]]; then
+            echo " off"
         else
-            echo "{\"text\": \"\", \"tooltip\": \"Night mode off\", \"class\": \"inactive\"}"
+            echo " ${cur}K"
         fi
         ;;
 esac
