@@ -1,3 +1,3 @@
 { ... }: {
-  # nixos machine-specific home overrides go here
+  # ROG-specific home overrides go here
 }
