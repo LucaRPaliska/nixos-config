@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-# Hyprsunset dial for waybar.
-# Left click:  cycle through presets (off → 5000K → 4500K → 4000K → 3500K → 3000K → off)
+# Hyprsunset dial for waybar — uses hyprctl IPC, no restart needed.
+# Left click:  cycle through presets
 # Right click: rofi menu to jump to any preset
 
 STATE_FILE="/tmp/hyprsunset_state"
-STATES=("off" "5000" "4500" "4000" "3500" "3000")
 
 current_state() {
     cat "$STATE_FILE" 2>/dev/null || echo "off"
@@ -14,22 +13,24 @@ current_state() {
 apply_state() {
     local state="$1"
     echo "$state" > "$STATE_FILE"
-    pkill hyprsunset 2>/dev/null
-    [[ "$state" != "off" ]] && hyprsunset -t "$state" &
+    if [[ "$state" == "off" ]]; then
+        hyprctl hyprsunset identity
+    else
+        hyprctl hyprsunset temperature "$state"
+    fi
 }
 
 case "$1" in
     cycle)
-        cur=$(current_state)
-        # Find index of current state, advance to next
-        next="off"
-        for i in "${!STATES[@]}"; do
-            if [[ "${STATES[$i]}" == "$cur" ]]; then
-                next="${STATES[$(( (i + 1) % ${#STATES[@]} ))]}"
-                break
-            fi
-        done
-        apply_state "$next"
+        case "$(current_state)" in
+            "off")  apply_state "5000" ;;
+            "5000") apply_state "4500" ;;
+            "4500") apply_state "4000" ;;
+            "4000") apply_state "3500" ;;
+            "3500") apply_state "3000" ;;
+            "3000") apply_state "off"  ;;
+            *)      apply_state "off"  ;;
+        esac
         ;;
 
     menu)

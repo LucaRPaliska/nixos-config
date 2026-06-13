@@ -17,8 +17,8 @@
   padding: 0px 2px;
   transition: none;
   animation: none;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 
-             0 0 10px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 #custom-openbracket,
@@ -58,35 +58,35 @@ button {
 /* Workspace */
 
 #workspaces button {
-    color: #ffffff;
-    background: transparent;
-    border-radius: 8px;
-    padding: 0 5px;
-    transition: all 0.3s ease;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
+  color: #ffffff;
+  background: transparent;
+  border-radius: 8px;
+  padding: 0 5px;
+  transition: all 0.3s ease;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 
 #workspaces button.active {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 
-               0 0 10px rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.4);
 
-    border-right: none;
-    border-left: none;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
+  border-right: none;
+  border-left: none;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 #workspaces button:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 #workspaces button.urgent {
-    color: #eb4d4b;
-    text-shadow: 0 0 5px #eb4d4b;
+  color: #eb4d4b;
+  text-shadow: 0 0 5px #eb4d4b;
 }
 
 .modules-left>widget:first-child>#workspaces {
@@ -105,14 +105,43 @@ button {
 }
 
 #mpris.playing {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
   color: @text;
 }
 
-/* I'm not sure why, but the idle icon just overlaps with the other ones. */
 #custom-idle_inhibitor {
-  padding: 0px 10px 0px 2px;
+  padding: 0px 8px 0px 2px;
+  /* ← right / left: adjust right value for eye spacing */
+  text-shadow: none;
+}
+
+#custom-power {
+  padding: 0px 6px 0px 4px;
+  /* ← adjust right value for power button spacing */
+  text-shadow: none;
+}
+
+#custom-bluetooth {
+  text-shadow: none;
+}
+
+#backlight {
+  padding: 0px 2px 0px 0px;
+  /* ← adjust left value (3rd number) for brightness spacing */
+}
+
+#custom-nightmode {
+  padding: 0px 5px 0px 0px;
+  /* ← adjust left value for sunset button spacing */
+}
+
+#mpris {
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+#mpris:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 /* Hover applied at the group box level to prevent double-application.
