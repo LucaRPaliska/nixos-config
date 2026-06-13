@@ -89,7 +89,6 @@
         ]
     },
     "network": {
-        "interface": "wlo1",
         "format-wifi": "{icon} |{bandwidthDownBytes} {bandwidthUpBytes}",
         "format-ethernet": "󰈀 LAN",
         "format-disconnected": "󰖪",

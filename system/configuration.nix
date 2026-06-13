@@ -3,7 +3,6 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
       ./modules
     ];
 
@@ -37,7 +36,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  networking.hostName = "nixos";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # LP - look into
   networking.networkmanager.enable = true;
@@ -120,7 +118,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 
-  powerManagement.cpuFreqGovernor = "schedutil";
 
   security.rtkit.enable = true;
   security.polkit.enable = true; # <------- see what this does?
