@@ -35,6 +35,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.android_sdk.accept_license = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # LP - look into

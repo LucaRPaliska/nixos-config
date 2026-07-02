@@ -39,6 +39,12 @@ return {
       vim.keymap.set("n", "<C-i>", function() harpoon:list():select(3) end)
       vim.keymap.set("n", "<C-o>", function() harpoon:list():select(4) end)
 
+      vim.keymap.set("n", "<leader>r", function() harpoon:list():remove() end, { desc = "Remove file from Harpoon" })
+      vim.keymap.set("n", "<leader>1", function() harpoon:list():replace_at(1) end, { desc = "Set file to Harpoon slot 1" })
+      vim.keymap.set("n", "<leader>2", function() harpoon:list():replace_at(2) end, { desc = "Set file to Harpoon slot 2" })
+      vim.keymap.set("n", "<leader>3", function() harpoon:list():replace_at(3) end, { desc = "Set file to Harpoon slot 3" })
+      vim.keymap.set("n", "<leader>4", function() harpoon:list():replace_at(4) end, { desc = "Set file to Harpoon slot 4" })
+
     end,
   },
 }

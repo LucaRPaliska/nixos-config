@@ -74,6 +74,8 @@ in
     texliveFull # LaTeX compiler tool
     gcc
     cargo # Rust package manager + compiler
+    # androidsdk
+    # android-studio-full # For andriod app emulator
 
     # LSP Servers
     lua-language-server

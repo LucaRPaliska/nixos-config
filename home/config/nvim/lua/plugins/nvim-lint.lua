@@ -18,7 +18,9 @@ return {
         local linters = lint.linters_by_ft[vim.bo.filetype]
         if not linters then return end
         local available = vim.tbl_filter(function(name)
-          return vim.fn.executable(lint.linters[name] and lint.linters[name].cmd or name) == 1
+          local linter = lint.linters[name]
+          local cmd = (linter and type(linter.cmd) == "string" and linter.cmd) or name
+          return vim.fn.executable(cmd) == 1
         end, linters)
         if #available > 0 then
           lint.try_lint(available)
