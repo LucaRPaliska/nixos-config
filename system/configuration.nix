@@ -126,11 +126,21 @@
   security.pam.services.hyprlock = {}; # gtk lock config LP - see if need to move this somewhere
 
   # Screensharing on Wayland
-  services.pipewire = { 
+  services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+    wireplumber.extraConfig = {
+      "51-bluez-config" = {
+        "monitor.bluez.properties" = {
+          "bluez5.codecs" = [ "aac" "sbc" "sbc_xq" ];
+          "bluez5.enable-sbc-xq" = true;
+          "bluez5.enable-msbc" = true;
+          "bluez5.enable-hw-volume" = true;
+        };
+      };
+    };
   };
 }

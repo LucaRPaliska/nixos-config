@@ -15,6 +15,8 @@ in
     grim # Utility that takes a screenshot for lock screen
     corrupter # Image corrupter effect for lock screen
     yazi # CLI with vim motions based file explorer
+    vlc # media player
+    playerctl # media player controller (media keys)
     # thunar managed via programs.thunar in system/configuration.nix
     waybar # Top status bar # LP - eww <-- look into
     eza # Modern look for ls (replaced with alias)
@@ -29,6 +31,8 @@ in
     btop # Resource monitor
     fastfetch # System information tool
     ncdu # Disk usage analyzer
+    parted # Partition manager
+    jmtpfs # FUSE filesystem for MTP devices
     pavucontrol # Audio control GUI
     xdg-utils # xdg-open and friends
     wl-clipboard # Wayland clipboard (keeps contents alive after app closes)
@@ -37,13 +41,14 @@ in
     zathura # PDF viewer
     hyprsunset # Blue light filter
     file-roller # Archive GUI (pairs with thunar-archive-plugin)
+    kdePackages.kdenlive # Simple video editor
 
     # Apps
     neovim
     luajitPackages.luarocks_bootstrap # nvim dependency <-- maybe look into moving this to home manager or moving nvim to system pkgs. Also, probably not needed in long-run if no plugins use this
     tmux
     lua
-    vivaldi
+    # vivaldi # removing vivaldi in favor of brave
     brave
     google-chrome
     vesktop # Discord client with Vencord built in
@@ -56,7 +61,6 @@ in
     winetricks
     audacity
     imagemagick # image editing terminal util
-    playerctl # media player controller (media keys)
 
     # Dev Stuff
     fbcat # Remove ltr
@@ -76,6 +80,7 @@ in
     cargo # Rust package manager + compiler
     # androidsdk
     # android-studio-full # For andriod app emulator
+    glib # C library of programming buildings blocks (gio for copying from MTP drives)
 
     # LSP Servers
     lua-language-server
