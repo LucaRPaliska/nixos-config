@@ -49,6 +49,15 @@
       ];
     };
 
+    # Server — headless, no desktop environment
+    nixosConfigurations.server = lib.nixosSystem {
+      inherit system;
+      modules = [
+        ./system/server.nix
+        ./system/hosts/server
+      ];
+    };
+
     # ── Home Manager configurations ──────────────────────────────────────────
     #   rebuild:  home-manager switch --flake ~/.dotfiles/ -b backup
     #   (auto-selects config matching current user@hostname)
@@ -64,6 +73,12 @@
         inherit pkgs;
         modules = [ ./home ./home/hosts/rog.nix ];
         extraSpecialArgs = { inherit inputs; hostname = "rog"; };
+      };
+
+      "listport@server" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./home/server.nix ];
+        extraSpecialArgs = { inherit inputs; hostname = "server"; };
       };
     };
   };
