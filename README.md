@@ -33,13 +33,13 @@ My personal NixOS-flake configuration running Hyprland. Configs are managed by h
 | Terminal         | Kitty                       |
 | Editor           | Neovim                      |
 | File Manager     | Thunar                      |
-| Browser          | Brave / Vivaldi             |
+| Browser          | Brave / Chrome              |
 | Screenshots      | Flameshot                   |
 | Wallpaper        | swww                        |
 | Lock Screen      | Hyprlock                    |
 | Idle Daemon      | Hypridle                    |
 | Display Manager  | greetd + tuigreet           |
-| Theme            | PureBlack GTK               |
+| Theme            | Graphite-Dark GTK           |
 | Icons            | Papirus-Dark                |
 | Cursor           | Bibata-Modern-Ice           |
 | Font             | Iosevka Nerd Font           |
@@ -53,7 +53,13 @@ My personal NixOS-flake configuration running Hyprland. Configs are managed by h
 ├── flake.nix                   # Flake inputs & outputs (nixpkgs, home-manager, hyprland, nixos-hardware)
 ├── system/
 │   ├── configuration.nix       # Core system config (networking, fonts, users, services)
-│   ├── hardware-configuration.nix
+│   ├── hosts/
+│   │   ├── hpenvy/             # HP Envy — AMD CPU, AMD GPU
+│   │   │   ├── default.nix
+│   │   │   └── hardware-configuration.nix
+│   │   └── rog/                # ROG — Intel CPU, NVIDIA GTX 1080
+│   │       ├── default.nix
+│   │       └── hardware-configuration.nix
 │   └── modules/
 │       ├── programs.nix        # Hyprland enable + xdg portals
 │       ├── packages.nix        # System-level packages
@@ -61,8 +67,10 @@ My personal NixOS-flake configuration running Hyprland. Configs are managed by h
 │       └── greetd.nix          # Login manager (tuigreet -> Hyprland)
 └── home/
     ├── default.nix             # Home-manager entry point
-    ├── pkgs/
-    │   └── pureblack-gtk-theme.nix   # Custom GTK theme derivation
+    ├── hosts/
+    │   ├── hpenvy.nix          # HP Envy home overrides
+    │   └── rog.nix             # ROG home overrides
+    ├── pkgs/                   # Custom package derivations
     ├── user/
     │   ├── programs.nix        # User packages, GTK theme, git, kitty, waybar, flameshot
     │   ├── shell.nix           # Zsh config, p10k, oh-my-zsh, aliases, zoxide
@@ -129,10 +137,11 @@ Configuration is split into two layers that are rebuilt independently:
 
 ## Hardware Notes
 
-nixos-hardware modules in use (no model-specific module exists for this laptop):
+### HP Envy (hpenvy) — AMD CPU, AMD GPU
+nixos-hardware modules: `common-cpu-amd`, `common-cpu-amd-pstate`, `common-pc-laptop`, `common-pc-laptop-ssd`
 
-- `common-cpu-amd` + `common-cpu-amd-pstate` — AMD microcode and P-state driver
-- `common-pc-laptop` — TLP power management
-- `common-pc-laptop-ssd` — periodic fstrim
+> **Note:** `common-pc-laptop` sets the CPU governor to `powersave` by default, which causes noticeable slowness. Overridden with `schedutil` in `system/hosts/hpenvy/default.nix`.
 
-> **Note:** `common-pc-laptop` sets the CPU governor to `powersave` by default, which causes noticeable slowness. This is overridden in `configuration.nix` with `schedutil`.
+### ROG (rog) — Intel CPU, NVIDIA GTX 1080 Mobile
+nixos-hardware modules: `common-cpu-intel`, `common-pc-laptop`, `common-pc-laptop-ssd`
+NVIDIA proprietary drivers configured in `system/hosts/rog/default.nix`.

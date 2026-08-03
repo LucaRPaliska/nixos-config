@@ -1,9 +1,5 @@
 { config, pkgs, home-manager, ... }:
 
-let
-  pureblack-gtk-theme = import ../pkgs/pureblack-gtk-theme.nix { inherit pkgs; };
-in
-
 {
   home.packages = with pkgs; [
     kitty # Terminal
@@ -18,13 +14,13 @@ in
     vlc # media player
     playerctl # media player controller (media keys)
     # thunar managed via programs.thunar in system/configuration.nix
-    waybar # Top status bar # LP - eww <-- look into
+    waybar # Top status bar
     eza # Modern look for ls (replaced with alias)
     zoxide # Faster and smarter replacement for cd
     bzmenu # Bluetooth GUI
     bluez # Bluetooth protocol stack for bzmenu
     networkmanagerapplet # for GUI on network manager
-    mako # Notification daemon <-- look into for more customization
+    mako # Notification daemon
     libnotify # mako dependancy
     swww # wallpaper shtuff
     socat # IPC socket listener (wallpaper_manager.sh)
@@ -45,7 +41,7 @@ in
 
     # Apps
     neovim
-    luajitPackages.luarocks_bootstrap # nvim dependency <-- maybe look into moving this to home manager or moving nvim to system pkgs. Also, probably not needed in long-run if no plugins use this
+    luajitPackages.luarocks_bootstrap # nvim dependency
     tmux
     lua
     # vivaldi # removing vivaldi in favor of brave
@@ -63,7 +59,6 @@ in
     imagemagick # image editing terminal util
 
     # Dev Stuff
-    fbcat # Remove ltr
     mkcert # EZ locally trusted development certs
     nodejs_24
     conda # Manages Python as a shell. Python and NixOS don't mix well.
@@ -125,7 +120,6 @@ in
 
   programs.hyprlock.enable = true;
 
-  # LP - look into potentially using sops to encrypt keys
   programs.git = {
     enable = true;
     settings = {
@@ -147,10 +141,9 @@ in
 
   programs.kitty = {
     enable = true;
-    # LP - move the extraConfig to dedicated file
     extraConfig = ''
       cursor_trail 1
-      cursor_train_decay 0.2
+      cursor_trail_decay 0.2
       cursor_trail_start_threshold 3
       background_opacity 0.5
       background_blur 1

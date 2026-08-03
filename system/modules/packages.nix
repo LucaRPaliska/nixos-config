@@ -1,9 +1,5 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-wlr
-  ];
+  # Portal packages are managed via xdg.portal in programs.nix
 }
-

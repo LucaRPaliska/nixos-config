@@ -29,16 +29,4 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true; 
-  };
-
-  services.pipewire.wireplumber.extraConfig = {
-    "monitor.bluez.properties" = {
-        "bluez5.enable-sbc-xq" = true;
-        "bluez5.enable-msbc" = true;
-        "bluez5.enable-hw-volume" = true;
-    };
-  };
 }

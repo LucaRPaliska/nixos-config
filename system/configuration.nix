@@ -20,7 +20,6 @@
     ripgrep # Regex pattern searcher (Nvim telescope)
     tree # CLI directory display
     htop-vim
-    # bc # Random math engine LP - see if needed at all / look into
     brightnessctl
     zsh # New shell
   ];
@@ -38,7 +37,6 @@
   nixpkgs.config.android_sdk.accept_license = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # LP - look into
   networking.networkmanager.enable = true;
 
   programs.ssh.extraConfig = ''
@@ -98,7 +96,7 @@
   users.users.listport = {
     isNormalUser = true;
     description = "Luca P";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     # packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -121,9 +119,8 @@
 
 
   security.rtkit.enable = true;
-  security.polkit.enable = true; # <------- see what this does?
-  # security.pam.services.gtklock = {}; # gtk lock config LP - see if need to move this somewhere
-  security.pam.services.hyprlock = {}; # gtk lock config LP - see if need to move this somewhere
+  security.polkit.enable = true;
+  security.pam.services.hyprlock = {};
 
   # Screensharing on Wayland
   services.pipewire = {
