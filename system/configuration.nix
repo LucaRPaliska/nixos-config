@@ -7,7 +7,7 @@
     ];
 
   environment.systemPackages = with pkgs; [
-    docker
+    docker_29
     vim
     wget
     polkit_gnome
@@ -25,6 +25,7 @@
   ];
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.package = pkgs.docker_29;
 
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
