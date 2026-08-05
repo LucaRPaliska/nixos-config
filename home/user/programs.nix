@@ -148,7 +148,7 @@
     enable = true;
     extraConfig = ''
       cursor_trail 1
-      cursor_trail_decay 0.2
+      cursor_trail_decay 0.2 0.3
       cursor_trail_start_threshold 3
       background_opacity 0.5
       background_blur 1
