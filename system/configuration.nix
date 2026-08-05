@@ -66,6 +66,8 @@
 
   services.tailscale.enable = true;
 
+  hardware.bluetooth.enable = true;
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";

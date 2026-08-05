@@ -56,9 +56,14 @@
     wineWowPackages.stable
     winetricks
     audacity
+    portaudio
     imagemagick # image editing terminal util
+    playerctl # media player controller (media keys)
+    obs-studio
 
     # Dev Stuff
+    arduino
+    fbcat # Remove ltr
     mkcert # EZ locally trusted development certs
     nodejs_24
     conda # Manages Python as a shell. Python and NixOS don't mix well.
@@ -165,6 +170,26 @@
         startupLaunch = true;
         showDesktopNotification = false;
       };
+    };
+  };
+
+  # Brave creates a SingletonLock file in its profile directory. If Brave is still
+  # running when the machine shuts down, this lock file persists on disk and prevents
+  # Brave from opening on the other machine (rog/hpenvy) until it is manually removed.
+  # This service ensures Brave quits cleanly before the system powers off.
+  systemd.user.services.brave-quit-on-shutdown = {
+    Unit = {
+      Description = "Quit Brave before shutdown";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+    Service = {
+      Type = "oneshot";
+      RemainAfterExit = "yes";
+      ExecStart = "${pkgs.coreutils}/bin/true";
+      ExecStop = "-${pkgs.procps}/bin/pkill -SIGTERM brave";
+      TimeoutStopSec = 5;
     };
   };
 }
