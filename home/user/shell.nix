@@ -35,11 +35,6 @@ in
         src = pkgs.zsh-powerlevel10k;
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
-      {
-        name = "powerlevel10k-config";
-        src = ./.; # Assumes p10k.zsh is in the same folder as this nix file
-        file = "p10k.zsh";
-      }
     ];
     shellAliases = myAliases;
     oh-my-zsh = {

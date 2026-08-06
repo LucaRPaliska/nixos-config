@@ -3,6 +3,7 @@ let configDir = ../config;
 in
 {
   home.file = {
+      ".p10k.zsh".source = ./p10k.zsh;
       ".config/nvim".source = "${configDir}/nvim";
       ".config/wallpapers".source = "${configDir}/wallpapers";
       # ".config/kitty".source = "${configDir}/kitty";
