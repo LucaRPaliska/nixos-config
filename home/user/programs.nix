@@ -1,5 +1,8 @@
-{ config, pkgs, home-manager, ... }:
+{ config, pkgs, home-manager, inputs, ... }:
 
+let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+in
 {
   home.packages = with pkgs; [
     kitty # Terminal
@@ -49,7 +52,8 @@
     google-chrome
     vesktop # Discord client with Vencord built in
     slack
-    spotify
+    # spotify installed by programs.spicetify below; adding pkgs.spotify here
+    # too would collide in the profile.
     obsidian
     zotero
     flameshot # screenshot utility
@@ -165,6 +169,15 @@
 
   programs.waybar = {
     enable = true;
+  };
+
+  programs.spicetify = {
+    enable = true;
+    theme = spicePkgs.themes.text;
+    enabledExtensions = with spicePkgs.extensions; [
+      adblockify # blocks in-client audio/banner ads
+      shuffle # true Fisher-Yates shuffle
+    ];
   };
 
   services.flameshot = {

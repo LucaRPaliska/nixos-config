@@ -7,6 +7,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, hyprland, nixos-hardware, ... }:
@@ -65,13 +67,21 @@
     homeConfigurations = {
       "listport@hpenvy" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home ./home/hosts/hpenvy.nix ];
+        modules = [
+          ./home
+          ./home/hosts/hpenvy.nix
+          inputs.spicetify-nix.homeManagerModules.spicetify
+        ];
         extraSpecialArgs = { inherit inputs; hostname = "hpenvy"; };
       };
 
       "listport@rog" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home ./home/hosts/rog.nix ];
+        modules = [
+          ./home
+          ./home/hosts/rog.nix
+          inputs.spicetify-nix.homeManagerModules.spicetify
+        ];
         extraSpecialArgs = { inherit inputs; hostname = "rog"; };
       };
 

@@ -40,6 +40,12 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
+  # Tailscale's openresolv fallback loses its upstream resolvers on resume,
+  # leaving DNS dead while wifi looks connected. resolved tracks per-link
+  # DHCP resolvers across suspend instead.
+  services.resolved.enable = true;
+  networking.networkmanager.dns = "systemd-resolved";
+
   programs.ssh.extraConfig = ''
     Host listport-hetzner
       HostName 5.78.197.197
