@@ -139,6 +139,9 @@
           "bluez5.enable-sbc-xq" = true;
           "bluez5.enable-msbc" = true;
           "bluez5.enable-hw-volume" = true;
+          # A2DP is output-only, so opening a bluetooth mic forces the whole
+          # headset down to mono HFP. Stay on A2DP and use the built-in mic.
+          "bluez5.autoswitch-profile" = false;
         };
       };
     };

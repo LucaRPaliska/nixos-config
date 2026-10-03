@@ -61,6 +61,9 @@
     playerctl # media player controller (media keys)
     obs-studio
 
+    # Games
+    prismlauncher # Minecraft launcher (Forge/NeoForge/Fabric instances)
+
     # Dev Stuff
     arduino
     fbcat # Remove ltr
@@ -75,8 +78,12 @@
     claude-monitor # gibidy baby monitor
     opencode # gibidy 2
     code-cursor # gibidy 3
+    vscode # Dev Containers extension needs real VS Code, not the Cursor fork
     texliveFull # LaTeX compiler tool
     gcc
+    maven # Build automation (used it for 160 autograding)
+    cmake # Build generator for software testing (also 160)
+    jdk # Latest Java Development Kit
     cargo # Rust package manager + compiler
     # androidsdk
     # android-studio-full # For andriod app emulator
