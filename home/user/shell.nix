@@ -1,4 +1,4 @@
-{ config, pkgs, home-manager, ... }:
+{ config, lib, pkgs, home-manager, ... }:
 let 
   myAliases = {
     ls = "eza --icons=always";
@@ -26,9 +26,21 @@ in
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    initContent = ''
-          source ~/.p10k.zsh
-      '';
+    initContent = lib.mkMerge [
+      (lib.mkBefore ''
+        # Draws a prompt from cache in ~10ms and buffers keystrokes while the
+        # rest of this file loads. Must stay before anything that writes to stdout.
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
+
+        # Skips compaudit, which only flags root-owned /nix/store completion dirs.
+        ZSH_DISABLE_COMPFIX=true
+      '')
+      ''
+        source ~/.p10k.zsh
+      ''
+    ];
     plugins = [
       {
         name = "powerlevel10k";
